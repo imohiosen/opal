@@ -8,8 +8,9 @@ const AuthCallbackPage = async (props: Props) => {
 
   const auth = await onAuthenticateUser()
 
+  console.debug(auth)
   if (auth.status === 200 || auth.status === 201) {
-      return redirect(`/dashboard/${auth.user?.workspaces[0].id}`);
+      return redirect(`/dashboard/${auth.user?.workspace[0].id}`);
   }
 
   if (auth.status === 403 || auth.status === 401 || auth.status === 404 || auth.status === 500) {
